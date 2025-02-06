@@ -1,0 +1,32 @@
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# .NET 5+
+*.db
+*.bak
+*.pdb
+*.log
+*.user
+*.lock.json
+*.nuget.props
+*.nuget.targets
+*.nuget.dgspec.json
+*.nuget.g.props
+*.nuget.g.targets
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+[Ll]og[0-9]*/
+[Ll]og[0-9]*/[0-9]*/
