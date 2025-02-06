@@ -71,6 +71,8 @@ namespace TmoTask.Services
                             .ThenByDescending(r => r.TotalSales)
                             .ToList();
 
+                        //TODO: change to get top sellers grouped by month and branch
+                        // Cache this list
                         _topSellersList = _aggregatedSalesList
                             .GroupBy(item => item.Month)
                             .Select(group => group
@@ -85,8 +87,7 @@ namespace TmoTask.Services
                                 })
                                 .First())
                             .ToList();
-                        var topSellersByBranch = _topSellersList
-                            .Where()
+                        
                     }
                 }
             }
