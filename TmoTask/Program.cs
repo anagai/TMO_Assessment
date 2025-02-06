@@ -13,8 +13,8 @@ builder.Services.AddSingleton<DataService>();
 var app = builder.Build();
 
 var dataService = app.Services.GetRequiredService<DataService>();
-string filePath = Path.Combine(Directory.GetCurrentDirectory(), "orders.csv");
-dataService.AggregateSalesData(filePath);
+
+dataService.AggregateSalesData();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
