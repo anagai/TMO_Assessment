@@ -1,22 +1,19 @@
+using Microsoft.Extensions.DependencyInjection;
 using TmoTask.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<DataService>();
+builder.Services.AddSingleton<IDataService, DataService>();
 
 var app = builder.Build();
 
-var dataService = app.Services.GetRequiredService<DataService>();
+var dataService = app.Services.GetRequiredService<IDataService>();
 
 dataService.AggregateSalesData();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

@@ -11,9 +11,9 @@ namespace TmoTask.Controllers
     public class PerformanceReportController : ControllerBase
     {
 
-        private readonly DataService _dataService;
+        private readonly IDataService _dataService;
 
-        public PerformanceReportController(DataService dataService)
+        public PerformanceReportController(IDataService dataService)
         {
             _dataService = dataService;
         }
@@ -21,22 +21,50 @@ namespace TmoTask.Controllers
         [HttpGet("top-sellers")]
         public IActionResult GetTopSellers([FromQuery] string branch)
         {
-            var result = _dataService.GetTopSellers(branch);
-            return Ok(result);
+            try
+            {
+                if (string.IsNullOrEmpty(branch))
+                {
+                    return BadRequest("Branch value is required.");
+                }
+                var result = _dataService.GetTopSellers(branch);
+                return Ok(result);
+            } catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+            
         }
 
         [HttpGet("branches")]
         public IActionResult GetBranches()
         {
-            var result = _dataService.GetBranches();
-            return Ok(result);
+
+            try
+            {
+                var result = _dataService.GetBranches();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+            
         }
 
         [HttpGet("reload-data")]
         public IActionResult ReloadData()
         {
-            _dataService.GenerateDataLists();
-            return Ok();
+            try
+            {
+                _dataService.GenerateDataLists();
+                return Ok("Success");
+            } catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+            
+            
         }
     }
 }

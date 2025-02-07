@@ -6,7 +6,7 @@ using TmoTask.DTO;
 namespace TmoTask.Services
 {
 
-    public sealed class DataService
+    public sealed class DataService: IDataService
     {
         //Ensure instantiated only once
         private static readonly Lazy<DataService> _instance =
