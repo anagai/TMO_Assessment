@@ -18,6 +18,13 @@ namespace TmoTask.Controllers
             _dataService = dataService;
         }
 
+        /*
+         * GetTopSellers()
+         * 
+         * Will pull Top Sellers for a branch from cached aggregated list.
+         * Aggregated list was generated upon application start.
+         */
+        
         [HttpGet("top-sellers")]
         public IActionResult GetTopSellers([FromQuery] string branch)
         {
@@ -36,6 +43,14 @@ namespace TmoTask.Controllers
             
         }
 
+        /*
+         * GetBranches()
+         * 
+         * Will get list of unique branch names from cached branch list.
+         * Branch list was pulled from aggregated data upon application start.
+         * 
+         */
+
         [HttpGet("branches")]
         public IActionResult GetBranches()
         {
@@ -51,6 +66,13 @@ namespace TmoTask.Controllers
             }
             
         }
+
+        /*
+         * ReloadData()
+         * 
+         * Re-generate aggregated and branch list data.
+         *  
+         */
 
         [HttpGet("reload-data")]
         public IActionResult ReloadData()
