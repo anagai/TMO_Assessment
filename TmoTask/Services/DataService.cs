@@ -88,10 +88,10 @@ namespace TmoTask.Services
                 .OrderBy(item => item.YearMonth)
                 .Select(item => new TopSellerItem
                 {
-                    Seller = item.Seller,
-                    YearMonth = ConvertToMonth(item.YearMonth),
-                    TotalSales = item.TotalSales,
-                    TotalOrders = item.TotalOrders
+                    seller = item.Seller,
+                    month = ConvertToMonth(item.YearMonth),
+                    totalSales = item.TotalSales,
+                    totalOrders = item.TotalOrders
                 })
                 .ToList();
         }

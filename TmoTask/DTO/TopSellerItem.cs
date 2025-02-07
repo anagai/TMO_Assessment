@@ -2,9 +2,9 @@
 {
     public class TopSellerItem
     {
-        public string Seller { get; set; }
-        public string YearMonth { get; set; }
-        public decimal TotalSales { get; set; }
-        public int TotalOrders { get; set; }
+        public string seller { get; set; }
+        public string month { get; set; }
+        public decimal totalSales { get; set; }
+        public int totalOrders { get; set; }
     }
 }

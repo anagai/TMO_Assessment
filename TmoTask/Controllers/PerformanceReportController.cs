@@ -1,12 +1,9 @@
-using CsvHelper;
-using CsvHelper.Configuration;
 using Microsoft.AspNetCore.Mvc;
-using System.Globalization;
 using TmoTask.Services;
 
 namespace TmoTask.Controllers
 {
-    [Route("[controller]")]
+    [Route("api")]
     [ApiController]
     public class PerformanceReportController : ControllerBase
     {
@@ -34,8 +31,10 @@ namespace TmoTask.Controllers
                 {
                     return BadRequest("Branch value is required.");
                 }
+
                 var result = _dataService.GetTopSellers(branch);
                 return Ok(result);
+
             } catch(Exception ex)
             {
                 return StatusCode(500, ex.Message);
@@ -81,11 +80,11 @@ namespace TmoTask.Controllers
             {
                 _dataService.GenerateDataLists();
                 return Ok("Success");
+
             } catch(Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
-            
             
         }
     }
